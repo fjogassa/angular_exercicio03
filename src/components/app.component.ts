@@ -56,7 +56,7 @@ export class AppComponent {
     targetCurrency = "BRL";
     baseAmount = 1;
     peso = 80.00;
-    altura = 180;
+    altura = 180;  
 
     constructor (private exchangeService: ExchangeService, private imcService: IMCService) { }
 
@@ -67,6 +67,9 @@ export class AppComponent {
     }
 
     get resultadoIMC() {
+
+        console.log("Inicio");
+
         const imcCalculado = this.imcService.getIMCCalculado(this.peso, this.altura);
 
         switch ( imcCalculado ) {
@@ -78,8 +81,8 @@ export class AppComponent {
             case 5: return "Obesidade grau I";
             case 6: return "Obesidade grau II (grave)";
             case 7: return "Obesidade grau III (mórbida)";
-            else "Não calculado";
-        }
+            default: return "Não calculado";
+        }        
     }
 
     isInvalid(value) {
