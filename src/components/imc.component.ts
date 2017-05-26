@@ -19,7 +19,7 @@ export class ComboBoxSelectComponent {
   valorSexoService: string[];
 
   constructor(imcService: IMCService) {
-    //this.valorSexoService = imcService.valorSexoService;
+    this.valorSexoService = imcService.valorSexoService;
   }
 
   onSelectedChange(selected: string) {

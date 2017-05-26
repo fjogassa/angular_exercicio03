@@ -7,10 +7,11 @@ import { AppComponent } from '../components/app.component';
 import { CurrencySelectComponent } from '../components/currency-select.component';
 import { ComboBoxSelectComponent } from '../components/imc.component';
 import { IMCService } from '../services/imc.service';
+import { IMCTelaComponent } from '../components/imc-tela-component';
 
 @NgModule({
   imports: [BrowserModule, FormsModule],
-  declarations: [AppComponent, CurrencySelectComponent, FixedPipe, ComboBoxSelectComponent],
+  declarations: [AppComponent, CurrencySelectComponent, FixedPipe, ComboBoxSelectComponent, IMCTelaComponent],
   providers: [ExchangeService, IMCService],
   bootstrap: [AppComponent]
 })

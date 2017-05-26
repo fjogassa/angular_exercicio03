@@ -1,51 +1,67 @@
+// Fonte: http://www.calcule.net/imc.calculo.indice.de.massa.corporal.a.php
 export class IMCService {
 
-    //valorSexoService = ['MASCULINO', 'FEMININO'];
+    valorSexoService = ['MASCULINO', 'FEMININO'];
 
     private getResultadoIMCMasculino(imc: number): number {
 
-         if ( imc <= 15 ) {
-             //Extremamente abaixo do peso
+        if ( imc <= 20.7 ) {
+             //Abaixo do peso 
              return 0;         
-        } else if ( imc > 15 && imc <= 16 ) {
-            //Gravemente abaixo do peso
+        } else if ( imc > 20.7 && imc <= 26.4 ) {
+            //No peso normal
             return 1;
-        } else if ( imc > 16 && imc <= 18.5 ) {
-            //Abaixo o peso ideal
+        } else if ( imc > 26.4 && imc <= 27.8 ) {
+            //Pouco acima do peso
             return 2;
-        } else if ( imc > 18.5 && imc <= 25 ) {
-            //Faixa de peso ideal
+        } else if ( imc > 27.8 && imc <= 31.1 ) {
+            //Acima do peso ideal
             return 3;
-        } else if ( imc > 25 && imc <= 30 ) {
-            //Sobrepeso
+        } else if ( imc > 31.1 ) {
+            //Obesidade
             return 4;
-        } else if ( imc > 30 && imc <= 35 ) {
-            //Obesidade grau I
-            return 5;
-        } else if ( imc > 35 && imc <= 40 ) {
-            //Obesidade grau II (grave)
-            return 6;
-        } else if ( imc > 40 ) {
-            //Obesidade grau III (mórbida)
-            return 7;
         } else {
             //Não calculado
             return -1;
         }
-
     }
 
-    getIMCCalculado(peso: number, altura: number) {
+    private getResultadoIMCFeminino(imc: number): number {
+        if ( imc <= 19.1 ) {
+             //Abaixo do peso 
+             return 0;         
+        } else if ( imc > 19.1 && imc <= 25.8 ) {
+            //No peso normal
+            return 1;
+        } else if ( imc > 25.8 && imc <= 27.3 ) {
+            //Pouco acima do peso
+            return 2;
+        } else if ( imc > 27.3 && imc <= 32.3 ) {
+            //Acima do peso ideal
+            return 3;
+        } else if ( imc > 32.3 ) {
+            //Obesidade
+            return 4;
+        } else {
+            //Não calculado
+            return -1;
+        }
+    }
+
+    getIMCCalculado(peso: number, altura: number, sexo: string) {
 
         let imc: number = 0;
         let resultado: number;
 
-        //IMC = 65 / (1,70 * 1,70) = 65 / 2,89 = 22,5 (peso normal) 
         imc = peso / ( (altura/100) * (altura/100) );
 
-        console.log("mensagem");
+        console.log(sexo + ": " + imc);
 
-        resultado = this.getResultadoIMCMasculino(imc);
+        if (sexo === "MASCULINO") {
+            resultado = this.getResultadoIMCMasculino(imc);
+        } else {
+            resultado = this.getResultadoIMCFeminino(imc);
+        }
 
         console.log(resultado);
 
