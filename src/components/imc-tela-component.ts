@@ -6,7 +6,7 @@ import { IMCService } from '../services/imc.service';
     template: 
     `
     <h2>Calculo do IMC</h2>
-        <table style="width:30%">
+        <table style="width:50%">
             <tr>                
                 <th>Sexo</th>
                 <th>Altura (cm)</th>
@@ -28,7 +28,22 @@ import { IMCService } from '../services/imc.service';
                 </td>
             </tr>
         </table>       
-    `
+    `,
+    styles: [
+    `   table, th {
+            border: 1px solid black;
+            border-collapse: collapse;
+            text-align: left;
+        }
+        table, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+            text-align: center;
+        }
+        .error {
+            background-color: #ff6666;
+        }        
+    `]
 })
 export class IMCTelaComponent {
 
